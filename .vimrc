@@ -19,6 +19,7 @@ set nomodeline
 set nobackup
 set noswapfile
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle and Plugin Options
 
 filetype off
@@ -55,14 +56,7 @@ filetype plugin indent on    " required
 " statusline always shown
 set laststatus=2
 
-" default the statusline to green when entering Vim
-" hi statusline guibg=gray64 guifg=gray16
-
-" Formats the statusline
-" format status bar "filename - line/Lines, character
-" set statusline=%t\ -\ %l/%L,\ %c
-" \ %{fugitive#statusline()}
-
+" lightline options
 let g:lightline = { 'colorscheme': 'one' }
 set noshowmode
 
@@ -88,18 +82,16 @@ map <C-o> :NERDTreeToggle<CR>
 autocmd!
 
 " Cursor Mode Settings
-
-let &t_SI.="\e[6 q" "SI = INSERT mode
-let &t_SR.="\e[4 q" "SR = REPLACE mode
-let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
-
-" Cursor settings:
 " 1 -> blinking block
 " 2 -> solid block 
 " 3 -> blinking underscore
 " 4 -> solid underscore
 " 5 -> blinking vertical bar
 " 6 -> solid vertical bar
+
+let &t_SI.="\e[6 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 
 " backspace fix
 set backspace=1
@@ -195,10 +187,6 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " python stuff
 let python_highlight_all = 1
 
-" enable correct rewrapping of lists (needs autoindent)
-set formatoptions+=n
-let &flp = '^\s*\(\\end\|\\item \)'
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Linting
 
@@ -209,14 +197,4 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_sign_error = 'E '
 let g:ale_sign_info = 'W '
 let g:ale_sign_warning = 'I '
-
-" use quickfix window instead of loclist
-"let g:ale_set_quickfix = 1
-"let g:ale_list_vertical = 1
-
-" Do not highlight messages matching strings like these.
-"let b:ale_exclude_highlights = ['docstring']
-
-"let g:ale_python_flake8_options = '--ignore=E501'
-"let g:ale_python_pylint_options = '-j 0 --max-line-length=120'
 
