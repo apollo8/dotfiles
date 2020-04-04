@@ -29,20 +29,37 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim' " required
 
-Plugin 'tpope/vim-fugitive'                 " git integration
-Plugin 'dense-analysis/ale'                 " linting engine
+" general
+Plugin 'itchyny/lightline.vim'              " status line
+
+" navigation
 Plugin 'preservim/nerdtree'                 " file browsing pane
+
+" linting
+Plugin 'dense-analysis/ale'                 " linting engine
+
+" editing
 Plugin 'ConradIrwin/vim-bracketed-paste'    " improve pasting from outside vim
-Plugin 'nelstrom/vim-visual-star-search'    " search symbol under cursor or selection
 Plugin 'tpope/vim-commentary'               " block commenting
 Plugin 'terryma/vim-multiple-cursors'       " multi-location editing
-Plugin 'itchyny/lightline.vim'
-Plugin 'junegunn/fzf'                       " fuzzy search
-Plugin 'junegunn/fzf.vim'
 
-" color schemes
+" search
+Plugin 'nelstrom/vim-visual-star-search'    " search symbol under cursor or selection
+Plugin 'junegunn/fzf'                       " fuzzy search of anything
+Plugin 'junegunn/fzf.vim'                   " see ':h fzf-vim'
+
+" git
+Plugin 'tpope/vim-fugitive'                 " git integration
+Plugin 'Xuyuanp/nerdtree-git-plugin'        " shows git file status in nerdtree navigator
+Plugin 'low-ghost/nerdtree-fugitive'        " menu 'm', then submenu 'g'
+
+" color
 Plugin 'aonemd/kuroi.vim'
 Plugin 'dracula/vim'
+
+" TRY THIS OUT WHEN UNIVERSAL CTAGS (MACPORTS) COMES WITH PYTHON38 SUPPORT
+" Plugin 'majutsushi/tagbar'
+
 
 " code completion
 Bundle 'Valloric/YouCompleteMe'
@@ -75,6 +92,10 @@ colorscheme kuroi
 
 map <C-o> :NERDTreeToggle<CR>
 
+let NERDTreeMinimalUI = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeQuitOnOpen = 1
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" General Editing
 
@@ -89,9 +110,9 @@ autocmd!
 " 5 -> blinking vertical bar
 " 6 -> solid vertical bar
 
-let &t_SI.="\e[6 q" "SI = INSERT mode
-let &t_SR.="\e[4 q" "SR = REPLACE mode
-let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
+" let &t_SI.="\e[6 q" "SI = INSERT mode
+" let &t_SR.="\e[4 q" "SR = REPLACE mode
+" let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 
 " backspace fix
 set backspace=1
