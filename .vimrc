@@ -20,52 +20,45 @@ set nobackup
 set noswapfile
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle and Plugin Options
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" vim-plug
 
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim' " required
+call plug#begin()
 
 " general
-Plugin 'itchyny/lightline.vim'              " status line
+Plug 'itchyny/lightline.vim'              " status line
 
 " navigation
-Plugin 'preservim/nerdtree'                 " file browsing pane
+Plug 'preservim/nerdtree'                 " file browsing pane
 
 " linting
-Plugin 'dense-analysis/ale'                 " linting engine
+Plug 'dense-analysis/ale'                 " linting engine
 
 " editing
-Plugin 'ConradIrwin/vim-bracketed-paste'    " improve pasting from outside vim
-Plugin 'tpope/vim-commentary'               " block commenting
-Plugin 'terryma/vim-multiple-cursors'       " multi-location editing
+Plug 'ConradIrwin/vim-bracketed-paste'    " improve pasting from outside vim
+Plug 'tpope/vim-commentary'               " block commenting
 
 " search
-Plugin 'nelstrom/vim-visual-star-search'    " search symbol under cursor or selection
-Plugin 'junegunn/fzf'                       " fuzzy search of anything
-Plugin 'junegunn/fzf.vim'                   " see ':h fzf-vim'
+Plug 'nelstrom/vim-visual-star-search'    " search symbol under cursor or selection
+Plug 'junegunn/fzf'                       " fuzzy search of anything
+Plug 'junegunn/fzf.vim'                   " see ':h fzf-vim'
 
 " git
-Plugin 'tpope/vim-fugitive'                 " git integration
-Plugin 'Xuyuanp/nerdtree-git-plugin'        " shows git file status in nerdtree navigator
-Plugin 'low-ghost/nerdtree-fugitive'        " menu 'm', then submenu 'g'
+Plug 'tpope/vim-fugitive'                 " git integration
 
 " color
-Plugin 'aonemd/kuroi.vim'
-Plugin 'dracula/vim'
+Plug 'aonemd/kuroi.vim'
+Plug 'dracula/vim'
 
 " TRY THIS OUT WHEN UNIVERSAL CTAGS (MACPORTS) COMES WITH PYTHON38 SUPPORT
 " Plugin 'majutsushi/tagbar'
 
+" completion engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " code completion
-Bundle 'Valloric/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Status Line
@@ -94,7 +87,6 @@ map <C-o> :NERDTreeToggle<CR>
 
 let NERDTreeMinimalUI = 1
 let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeQuitOnOpen = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" General Editing
