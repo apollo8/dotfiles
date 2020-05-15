@@ -211,6 +211,11 @@ let g:ale_sign_info = 'W '
 let g:ale_sign_warning = 'I '
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" Sign Column
+
+set signcolumn=yes
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Status Line
 
 " statusline always shown
@@ -232,13 +237,12 @@ function! LightlineFilename()
 endfunction
 
 let g:lightline                  = {'colorscheme':'one'}
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.tabline          = {'left': [['buffers']], 'right': []}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
 let g:lightline.component_function = {'filename': 'LightlineFilename'}
 
 let g:lightline#bufferline#show_number  = 0
-" let g:lightline#bufferline#shorten_path = 1
 let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline#bufferline#unnamed      = '[No Name]'
 
