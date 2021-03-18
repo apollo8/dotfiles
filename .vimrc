@@ -49,32 +49,55 @@ Plug 'tpope/vim-commentary'               " block commenting
 
 " search
 Plug 'nelstrom/vim-visual-star-search'    " search symbol under cursor or selection
-Plug 'junegunn/fzf'                       " fuzzy search of anything
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " fuzzy search of anything
 Plug 'junegunn/fzf.vim'                   " see ':h fzf-vim'
 
 " git
 Plug 'tpope/vim-fugitive'                 " git integration
-Plug 'mhinz/vim-signify'                  " mod signs
+" Plug 'mhinz/vim-signify'                  " mod signs
 
 " color
-Plug 'aonemd/kuroi.vim'
-Plug 'dracula/vim'
+" Plug 'aonemd/kuroi.vim'
+" Plug 'rakr/vim-one'
+" Plug 'ciaranm/inkpot'
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'gosukiwi/vim-atom-dark'
+" Plug 'jnurmine/Zenburn'
+" Plug 'kyoz/purify', { 'rtp': 'vim' }
+" Plug 'morhetz/gruvbox'
+" Plug 'sjl/badwolf'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+" Plug 'tomasr/molokai'
 
-" LSP support
+" language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'vim-syntastic/syntastic'
+"Plug 'bfrg/vim-cpp-modern'
+"Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'vim-jp/vim-cpp'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
+
+" Debugging
+" Plug 'puremourning/vimspector'
 
 call plug#end()
 
-" let g:vimspector_enable_mappings = 'HUMAN'
-" packadd! vimspector
+" set rtp+=/opt/local/share/fzf/vim
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" Debugging
+
+let g:vimspector_enable_mappings = 'HUMAN'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Colors
 
 set termguicolors
+syntax on
 set background=dark
-
-colorscheme kuroi
+let g:dracula_italic = 0
+let g:dracula_colorterm = 1
+colorscheme onehalfdark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Git
@@ -114,8 +137,15 @@ set mouse=a
 set wildmenu
 set wildmode=longest,list,full
 
-" turn syntax highlighting on
-syntax on
+" Disable function highlighting (affects both C and C++ files)
+"let g:cpp_no_function_highlight = 0
+
+" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
+" (affects both C and C++ files)
+"let g:cpp_simple_highlight = 0
+
+" see https://github.com/bfrg/vim-cpp-modern
+let c_no_curly_error = 1
 
 " default encoding
 set encoding=utf-8
@@ -131,6 +161,8 @@ set shiftwidth=4
 set shiftround
 set expandtab
 set autoindent
+autocmd Filetype cpp setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 
 " cursorline
 set cursorline
@@ -233,6 +265,18 @@ let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline#bufferline#unnamed      = '[No Name]'
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" Syntax Checking
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_highlighting = 0
+
+let g:syntastic_cpp_checkers = ['cppcheck']
+let g:syntastic_cpp_cppcheck_args = "--enable=all --inconclusive --project=compile_commands.json"
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Language Servers
 
 " Don't pass messages to |ins-completion-menu|.
@@ -299,8 +343,8 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-" xmap <leader>fmt  <Plug>(coc-format-selected)
-" nmap <leader>fmt  <Plug>(coc-format-selected)
+xmap <leader>s  <Plug>(coc-format-selected)
+nmap <leader>s  <Plug>(coc-format-selected)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
