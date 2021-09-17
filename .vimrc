@@ -49,7 +49,7 @@ Plug 'tpope/vim-commentary'               " block commenting
 
 " search
 Plug 'nelstrom/vim-visual-star-search'    " search symbol under cursor or selection
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " fuzzy search of anything
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fuzzy search of anything
 Plug 'junegunn/fzf.vim'                   " see ':h fzf-vim'
 
 " git
@@ -57,17 +57,9 @@ Plug 'tpope/vim-fugitive'                 " git integration
 " Plug 'mhinz/vim-signify'                  " mod signs
 
 " color
-" Plug 'aonemd/kuroi.vim'
-" Plug 'rakr/vim-one'
-" Plug 'ciaranm/inkpot'
-" Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'gosukiwi/vim-atom-dark'
-" Plug 'jnurmine/Zenburn'
-" Plug 'kyoz/purify', { 'rtp': 'vim' }
-" Plug 'morhetz/gruvbox'
-" Plug 'sjl/badwolf'
+Plug 'aonemd/kuroi.vim'
+Plug 'rakr/vim-one'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-" Plug 'tomasr/molokai'
 
 " language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -82,8 +74,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
-" set rtp+=/opt/local/share/fzf/vim
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Debugging
 
@@ -95,9 +85,7 @@ let g:vimspector_enable_mappings = 'HUMAN'
 set termguicolors
 syntax on
 set background=dark
-let g:dracula_italic = 0
-let g:dracula_colorterm = 1
-colorscheme onehalfdark
+colorscheme kuroi
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Git
@@ -254,7 +242,7 @@ function! LightlineFilename()
   return expand('%')
 endfunction
 
-let g:lightline                  = {'colorscheme':'one'}
+let g:lightline                  = {'colorscheme':'onehalfdark'}
 let g:lightline.tabline          = {'left': [['buffers']], 'right': []}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
